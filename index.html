@@ -3,103 +3,218 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Smart Farming</title>
+  <title>Smart Farming Dashboard</title>
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
     body {
-      background: #f5f6f8;
+      background-color: #f8f9fe;
+      font-family: 'Poppins', sans-serif;
+      color: #555;
     }
+    
+    .dashboard-header {
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    .dashboard-header h1 {
+      font-weight: 700;
+      color: #333;
+    }
+
+    .dashboard-header {
+      color: #777;
+    }
+
     .sensor-card {
-      border-radius: 12px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-      text-align: center;
-      padding: 15px;
+      background-color: #ffffff;
+      border-radius: 16px;
+      border: none;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      padding: 20px;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .sensor-value {
-      font-size: 1.4rem;
+
+    .sensor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+    
+    .sensor-card .card-top {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .sensor-card .icon-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+    
+    .sensor-card .sensor-label {
       font-weight: 600;
-      margin-top: 6px;
+      font-size: 0.9rem;
+      color: #6c757d;
     }
+
+    .sensor-card .sensor-value {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-top: 8px;
+      text-align: right;
+    }
+    
+    .sensor-card .progress {
+        height: 8px;
+        border-radius: 4px;
+        background-color: #e9ecef;
+    }
+
+    .icon-primary { background-color: #0d6efd; }
+    .text-primary { color: #0d6efd !important; }
+
+    .icon-success { background-color: #198754; }
+    .text-success { color: #198754 !important; }
+
+    .icon-info { background-color: #0dcaf0; }
+    .text-info { color: #0dcaf0 !important; }
+    
+    .icon-warning { background-color: #ffc107; }
+    .text-warning { color: #ffc107 !important; }
+
+    .icon-danger { background-color: #dc3545; }
+    .text-danger { color: #dc3545 !important; }
+
   </style>
 </head>
 <body>
-  <div class="container py-4">
-    <h3 class="mb-4">Smart Farming</h3>
-    <div class="row g-3">
+  <div class="container py-5">
+    <header class="dashboard-header mb-4">
+      <h1>Smart Farming Dashboard</h1>
+    </header>
 
-      <div class="col-md-3 col-sm-6">
-        <div class="sensor-card border-primary bg-white">
-          <div>KELEMBABAN (RH)</div>
-          <div class="sensor-value text-primary">54 %</div>
+    <div class="row g-4">
+
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="sensor-card">
+            <div class="card-top">
+                <div class="icon-circle icon-primary"><i class="fas fa-tint"></i></div>
+                <div class="sensor-label">KELEMBABAN (RH)</div>
+            </div>
+            <div class="sensor-value text-primary">54 %</div>
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
-        <div class="sensor-card border-success bg-white">
-          <div>TDS</div>
-          <div class="sensor-value text-success">400 ppm</div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="sensor-card">
+            <div class="card-top">
+                <div class="icon-circle icon-success"><i class="fas fa-vial"></i></div>
+                <div class="sensor-label">TDS</div>
+            </div>
+            <div class="sensor-value text-success">400 ppm</div>
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
-        <div class="sensor-card border-info bg-white">
-          <div>KEKERUHAN (TURBID)</div>
-          <div class="sensor-value text-info">18 NTU</div>
-          <div class="progress mt-2" style="height: 10px;">
-            <div class="progress-bar" role="progressbar" style="width: 36%;" aria-valuenow="18" aria-valuemin="0" aria-valuemax="50"></div>
-          </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="sensor-card">
+            <div class="card-top">
+                <div class="icon-circle icon-info"><i class="fas fa-water"></i></div>
+                <div class="sensor-label">KEKERUHAN (TURBID)</div>
+            </div>
+            <div class="sensor-value text-info">18 NTU</div>
+            <div class="progress mt-2">
+              <div class="progress-bar bg-info" role="progressbar" style="width: 36%;" aria-valuenow="18" aria-valuemin="0" aria-valuemax="50"></div>
+            </div>
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
-        <div class="sensor-card border-warning bg-white">
-          <div>TEMPERATUR AIR (WTEMP)</div>
-          <div class="sensor-value text-warning">25 °C</div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="sensor-card">
+            <div class="card-top">
+                <div class="icon-circle icon-warning"><i class="fas fa-thermometer-half"></i></div>
+                <div class="sensor-label">TEMPERATUR AIR</div>
+            </div>
+            <div class="sensor-value text-warning">25 °C</div>
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
-        <div class="sensor-card border-primary bg-white">
-          <div>OKSIGEN TERLARUT</div>
-          <div class="sensor-value text-primary">10 ppm</div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="sensor-card">
+            <div class="card-top">
+                <div class="icon-circle icon-primary"><i class="fas fa-wind"></i></div>
+                <div class="sensor-label">OKSIGEN TERLARUT</div>
+            </div>
+            <div class="sensor-value text-primary">10 ppm</div>
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
-        <div class="sensor-card border-success bg-white">
-          <div>INTENSITAS CAHAYA</div>
-          <div class="sensor-value text-success">100 Lux</div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="sensor-card">
+            <div class="card-top">
+                <div class="icon-circle icon-success"><i class="fas fa-sun"></i></div>
+                <div class="sensor-label">INTENSITAS CAHAYA</div>
+            </div>
+            <div class="sensor-value text-success">100 Lux</div>
+        </div>
+      </div>
+      
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="sensor-card">
+            <div class="card-top">
+                <div class="icon-circle icon-info"><i class="fas fa-temperature-high"></i></div>
+                <div class="sensor-label">TEMPERATUR UDARA</div>
+            </div>
+            <div class="sensor-value text-info">34 °C</div>
+            <div class="progress mt-2">
+              <div class="progress-bar bg-info" role="progressbar" style="width: 68%;" aria-valuenow="34" aria-valuemin="0" aria-valuemax="50"></div>
+            </div>
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
-        <div class="sensor-card border-info bg-white">
-          <div>TEMPERATUR UDARA (AMTEMP)</div>
-          <div class="sensor-value text-info">34 °C</div>
-          <div class="progress mt-2" style="height: 10px;">
-            <div class="progress-bar bg-info" role="progressbar" style="width: 68%;" aria-valuenow="34" aria-valuemin="0" aria-valuemax="50"></div>
-          </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="sensor-card">
+            <div class="card-top">
+                <div class="icon-circle icon-warning"><i class="fas fa-bolt"></i></div>
+                <div class="sensor-label">EC</div>
+            </div>
+            <div class="sensor-value text-warning">2 µS/cm</div>
+        </div>
+      </div>
+      
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="sensor-card">
+            <div class="card-top">
+                <div class="icon-circle icon-danger"><i class="fas fa-faucet"></i></div>
+                <div class="sensor-label">ALIRAN AIR (WFLOW)</div>
+            </div>
+            <div class="sensor-value text-danger">34 L/m</div>
         </div>
       </div>
 
-      <div class="col-md-3 col-sm-6">
-        <div class="sensor-card border-warning bg-white">
-          <div>EC</div>
-          <div class="sensor-value text-warning">2</div>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6">
-        <div class="sensor-card border-danger bg-white">
-          <div>ALIRAN AIR (WFLOW)</div>
-          <div class="sensor-value text-danger">34</div>
-        </div>
-      </div>
-
-      <div class="col-md-3 col-sm-6">
-        <div class="sensor-card border-danger bg-white">
-          <div>pH</div>
-          <div class="sensor-value text-danger">7.1</div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="sensor-card">
+            <div class="card-top">
+                <div class="icon-circle icon-danger"><i class="fas fa-flask"></i></div>
+                <div class="sensor-label">pH</div>
+            </div>
+            <div class="sensor-value text-danger">7.1</div>
         </div>
       </div>
 
